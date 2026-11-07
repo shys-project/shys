@@ -9,3 +9,8 @@ SPDX-License-Identifier = "MIT OR Apache-2.0"
 path = ["crates/server/**", "crates/web/**"]
 SPDX-FileCopyrightText = "2026 Shys contributors"
 SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = "CODE_OF_CONDUCT.md"
+SPDX-FileCopyrightText = ["Contributor Covenant contributors", "2026 Shys contributors"]
+SPDX-License-Identifier = "CC-BY-SA-4.0"
