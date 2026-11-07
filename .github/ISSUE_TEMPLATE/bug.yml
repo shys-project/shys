@@ -1,0 +1,80 @@
+name: Bug report
+description: Report something that is not working as expected.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug.
+
+        **Never paste real secrets, Shys links or keys in this form.**
+        A Shys link contains the decryption key.
+
+  - type: checkboxes
+    id: not-security
+    attributes:
+      label: Security
+      options:
+        - label: >-
+            This is not a security vulnerability. Security issues must be
+            reported privately, as described in SECURITY.md.
+          required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - shys-core
+        - shys-cli
+        - shys-server
+        - shys-web
+        - Documentation or packaging
+        - Not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: A clear description of the problem.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      placeholder: For example v0.1.0 or a commit hash
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Operating system, browser, and whether you were using Tor.
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Remove any secrets, links or keys before pasting.
+      render: shell

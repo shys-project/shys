@@ -1,0 +1,50 @@
+name: Feature request
+description: Suggest an idea or improvement for Shys.
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting an improvement. For significant changes, this
+        issue is the place to agree on the approach before anyone writes code.
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - shys-core
+        - shys-cli
+        - shys-server
+        - shys-web
+        - Documentation or packaging
+        - Not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Describe the need or use case, not only the solution.
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+
+  - type: textarea
+    id: security
+    attributes:
+      label: Security considerations
+      description: >-
+        Could this change affect how secrets, keys or metadata are handled?
