@@ -1,0 +1,1 @@
+//! Web client for Shys, compiled to WebAssembly.
