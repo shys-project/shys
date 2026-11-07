@@ -38,3 +38,27 @@ jobs:
 
       - name: WebAssembly
         run: cargo check -p shys-core -p shys-web --target wasm32-unknown-unknown --locked
+
+  repository:
+    name: Repository
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: REUSE compliance
+        run: pipx run --spec reuse==6.2.0 reuse lint
+
+      - name: Install editorconfig-checker
+        env:
+          EC_VERSION: v4.0.2
+          EC_SHA256: 44efaef3ed14c6ab52eb87481d78e5e5c204796dccf26e2f4598a61ba17f8003
+        run: |
+          curl -fsSL -o "$RUNNER_TEMP/ec.tar.gz" \
+            "https://github.com/editorconfig-checker/editorconfig-checker/releases/download/${EC_VERSION}/editorconfig-checker-linux-amd64.tar.gz"
+          echo "${EC_SHA256}  $RUNNER_TEMP/ec.tar.gz" | sha256sum -c -
+          tar xzf "$RUNNER_TEMP/ec.tar.gz" -C "$RUNNER_TEMP" editorconfig-checker
+
+      - name: EditorConfig
+        run: $RUNNER_TEMP/editorconfig-checker
