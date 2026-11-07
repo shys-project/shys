@@ -1,0 +1,29 @@
+# Configuration for cargo-deny: https://embarkstudios.github.io/cargo-deny/
+
+[graph]
+all-features = true
+
+[advisories]
+# Vulnerabilities and unsound crates are always errors.
+unmaintained = "all"
+yanked = "deny"
+
+[licenses]
+# Licenses allowed for dependencies. Add new ones deliberately, in their own
+# pull request, after checking they are compatible with every crate.
+allow = ["Apache-2.0", "MIT"]
+confidence-threshold = 0.93
+# Only our own server and web crates may use the AGPL.
+exceptions = [
+    { allow = ["AGPL-3.0-or-later"], crate = "shys-server" },
+    { allow = ["AGPL-3.0-or-later"], crate = "shys-web" },
+]
+
+[bans]
+multiple-versions = "warn"
+wildcards = "deny"
+allow-wildcard-paths = true
+
+[sources]
+unknown-registry = "deny"
+unknown-git = "deny"
